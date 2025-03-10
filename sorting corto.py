@@ -9,11 +9,11 @@
 #                                                     #
 #######################################################
 
-#import matplotlib.pyplot as plt  HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
+#import matplotlib.pyplot as plt  ##HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
 
 import random
 from time import time
-#import numpy as np             HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
+#import numpy as np             ##HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
 #import numpy.polynomial as P
 
 
@@ -162,27 +162,6 @@ TB3=[]
 # Lista de tamaños
 Tam=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-#for e in Tam:
-    
-    
-
-# Se imprimen las respectivas listas con pyplot VOY A DEJAR COMENTADA ESTE PARTE HASTA QUE TERMINEMOS
-#plt.plot(Tam,TI1,'r--',Tam,TS1,'bs',Tam,TB1,'g^')
-#plt.title('Burbuja')
-#plt.ylabel('Tiempo (s)')
-#plt.xlabel('Nodos (x 100)')
-#plt.show()
-
-#plt.plot(Tam,TI2,'r--',Tam,TS2,'bs',Tam,TB2,'g^')
-#plt.title('Inserción')
-#plt.xlabel('Nodos (x 100)')
-#plt.show()
-
-#plt.plot(Tam,TI3,'r--',Tam,TS3,'bs',Tam,TB3,'g^')
-#plt.title('Selección')
-#plt.ylabel('Tiempo (s)')
-#plt.xlabel('Nodos (x 100)')
-#plt.show()
 
 #print(TI1,Tam)
 prueba=[]
@@ -195,49 +174,49 @@ for e in Tam:
     
 
     t=time()
-    Insercion(GeneraD(e*1), e*1)  ## 4,3,2,1
+    Insercion(GeneraD(e*100), e*100)  ## 4,3,2,1
     t=time()-t
     TI1.append(t)
     print("Inserción de Derecho tamaño ",e*100,": ",t)
     
     t=time()
-    Seleccion(GeneraD(e*1), e*1)  ##6,3,2,9
+    Seleccion(GeneraD(e*100), e*100)  ##6,3,2,9
     t=time()-t
     TS1.append(t)
     print("Selección de Derecho tamaño ",e*100,": ",t)
     
     t=time()
-    Burbuja(GeneraI(e*1), e*1) ##1,2,3,
+    Burbuja(GeneraI(e*100), e*100) ##1,2,3,
     t=time()-t
     TB2.append(t)
     print("Burbuja de Inverso tamaño ",e*100,": ",t)
     
     t=time()
-    Insercion(GeneraI(e*1), e*1)  ## 4,3,2,1
+    Insercion(GeneraI(e*100), e*100)  ## 4,3,2,1
     t=time()-t
     TI2.append(t)
     print("Insercion de Inverso tamaño ",e*100,": ",t)
     
     t=time()
-    Seleccion(GeneraI(e*1), e*1)  ##6,3,2,9
+    Seleccion(GeneraI(e*100), e*100)  ##6,3,2,9
     t=time()-t
     TS2.append(t)
     print("Seleccion de Inverso tamaño ",e*100,": ",t)
     
     t=time()
-    Burbuja(GeneraR(e*1), e*1)  ##1,2,3,4
+    Burbuja(GeneraR(e*100), e*100)  ##1,2,3,4
     t=time()-t
     TB3.append(t)
     print("Burbuja de Random tamaño ",e*100,": ",t)
     
     t=time()
-    Insercion(GeneraR(e*1), e*1)  ## 4,3,2,1
+    Insercion(GeneraR(e*100), e*100)  ## 4,3,2,1
     t=time()-t
     TI3.append(t)
     print("Insercion de Random tamaño ",e*100,": ",t)
     
     t=time()
-    Seleccion(GeneraR(e*1), e*1)  ##6,3,2,9
+    Seleccion(GeneraR(e*100), e*100)  ##6,3,2,9
     t=time()-t
     TS3.append(t)
     print("Seleccion de Random tamaño ",e*100,": ",t)
@@ -267,3 +246,35 @@ print(TS2)
 print("Seleccion Random")
 print(TS3)
 
+
+# Se imprimen las respectivas listas con pyplot VOY A DEJAR COMENTADA ESTE PARTE HASTA QUE TERMINEMOS
+#plt.plot(Tam,TI1,'r--',Tam,TS1,'bs',Tam,TB1,'g^')
+#plt.title('Burbuja')
+#plt.ylabel('Tiempo (s)')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
+
+#plt.plot(Tam,TI2,'r--',Tam,TS2,'bs',Tam,TB2,'g^')
+#plt.title('Inserción')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
+
+#plt.plot(Tam,TI3,'r--',Tam,TS3,'bs',Tam,TB3,'g^')
+#plt.title('Selección')
+#plt.ylabel('Tiempo (s)')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
+
+
+t=time()
+MergeSort(GeneraI(100), 1000)
+t=time()-t
+print("Mergesort inverso tamaño de 100")
+print(t)
+
+
+#t=time()
+#print(QuickSort(GeneraI(1000), 1, 999))
+#t=time()-t
+#print("Quicksort inverso tamaño de 10000")
+#print(t)
