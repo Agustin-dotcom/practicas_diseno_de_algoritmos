@@ -265,6 +265,11 @@ print(TS3)
 #plt.xlabel('Nodos (x 100)')
 #plt.show()
 
+t=time()
+MergeSort(GeneraD(100), 1000)
+t=time()-t
+print("Mergesort Directo tamaño de 100")
+print(t)
 
 t=time()
 MergeSort(GeneraI(100), 1000)
@@ -273,8 +278,26 @@ print("Mergesort inverso tamaño de 100")
 print(t)
 
 
-#t=time()
-#print(QuickSort(GeneraI(1000), 1, 999))
-#t=time()-t
-#print("Quicksort inverso tamaño de 10000")
-#print(t)
+t=time()
+MergeSort(GeneraR(100), 1000)
+t=time()-t
+print("Mergesort Random tamaño de 100")
+print(t)
+
+t=time()
+QuickSort(GeneraD(100), 0, 99) ##Si es mucho mayor, llega al límite
+t=time()-t
+print("Quicksort derecho tamaño de 10000")
+print(t)
+
+t=time()
+QuickSort(GeneraI(100), 0, 99) ##Si es mucho mayor, llega al límite
+t=time()-t
+print("Quicksort inverso tamaño de 10000")
+print(t)
+
+t=time()
+QuickSort(GeneraR(100), 0, 99) ##Si es mucho mayor, llega al límite
+t=time()-t
+print("Quicksort random tamaño de 10000")
+print(t)
