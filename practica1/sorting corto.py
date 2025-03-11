@@ -9,7 +9,7 @@
 #                                                     #
 #######################################################
 
-import matplotlib.pyplot as plt  ##HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
+#import matplotlib.pyplot as plt  ##HE COMENTADO ESTO PORQUE ME DICE QUE NO EXISTE
 
 import random
 from time import time
@@ -135,7 +135,7 @@ def experimento(n):
     ti = 0
     ts = 0
     for i in range(1,10):
-        V1=V1+GeneraR(n)  ##SUMAMOS EN CADA ITERACIÓN LOS VALORES GENERADOS ALEATORIAMENTE
+        V1=V1+generaR(n)  ##SUMAMOS EN CADA ITERACIÓN LOS VALORES GENERADOS ALEATORIAMENTE
     V1=V1/10                ##AL TENERLOS TODOS, LO DIVIDIMOS POR 10, PORQUE HAY 10 VALORES SUMADOS
 # Aleatorio. 10 experimentos
 # Realizar experimentos y completar las listas usando GeneraR(n)
@@ -249,56 +249,55 @@ print(TS3)
 
 # Se imprimen las respectivas listas con pyplot VOY A DEJAR COMENTADA ESTE PARTE HASTA QUE TERMINEMOS
 #plt.plot(Tam,TI1,'r--',Tam,TS1,'bs',Tam,TB1,'g^')
-# plt.title('Burbuja')
-# plt.ylabel('Tiempo (s)')
-# plt.xlabel('Nodos (x 100)')
-# plt.show()
+#plt.title('Burbuja')
+#plt.ylabel('Tiempo (s)')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
 
-plt.plot(Tam,TI2,'r--',Tam,TS2,'bs',Tam,TB2,'g^')
-plt.title('Inserción')
-plt.xlabel('Nodos (x 100)')
+#plt.plot(Tam,TI2,'r--',Tam,TS2,'bs',Tam,TB2,'g^')
+#plt.title('Inserción')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
 
-plt.show()
-
-plt.plot(Tam,TI3,'r--',Tam,TS3,'bs',Tam,TB3,'g^')
-plt.title('Selección')
-plt.ylabel('Tiempo (s)')
-plt.xlabel('Nodos (x 100)')
-plt.show()
+#plt.plot(Tam,TI3,'r--',Tam,TS3,'bs',Tam,TB3,'g^')
+#plt.title('Selección')
+#plt.ylabel('Tiempo (s)')
+#plt.xlabel('Nodos (x 100)')
+#plt.show()
 
 t=time()
-MergeSort(GeneraD(100), 1000)
+MergeSort(GeneraD(10000), 10000)
 t=time()-t
-print("Mergesort Directo tamaño de 100")
+print("Mergesort Directo tamaño de 10000")
 print(t)
 
 t=time()
-MergeSort(GeneraI(100), 1000)
+MergeSort(GeneraI(10000), 10000)
 t=time()-t
-print("Mergesort inverso tamaño de 100")
+print("Mergesort inverso tamaño de 10000")
 print(t)
 
 
 t=time()
-MergeSort(GeneraR(100), 1000)
+MergeSort(GeneraR(10000), 10000)
 t=time()-t
-print("Mergesort Random tamaño de 100")
+print("Mergesort Random tamaño de 10000")
 print(t)
 
 t=time()
 QuickSort(GeneraD(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort derecho tamaño de 10000")
+print("Quicksort derecho tamaño de 100")
 print(t)
 
 t=time()
 QuickSort(GeneraI(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort inverso tamaño de 10000")
+print("Quicksort inverso tamaño de 100")
 print(t)
 
 t=time()
 QuickSort(GeneraR(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort random tamaño de 10000")
+print("Quicksort random tamaño de 100")
 print(t)
