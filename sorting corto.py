@@ -266,38 +266,38 @@ print(TS3)
 #plt.show()
 
 t=time()
-MergeSort(GeneraD(100), 1000)
+MergeSort(GeneraD(10000), 10000)
 t=time()-t
-print("Mergesort Directo tamaño de 100")
+print("Mergesort Directo tamaño de 10000")
 print(t)
 
 t=time()
-MergeSort(GeneraI(100), 1000)
+MergeSort(GeneraI(10000), 10000)
 t=time()-t
-print("Mergesort inverso tamaño de 100")
+print("Mergesort inverso tamaño de 10000")
 print(t)
 
 
 t=time()
-MergeSort(GeneraR(100), 1000)
+MergeSort(GeneraR(10000), 10000)
 t=time()-t
-print("Mergesort Random tamaño de 100")
+print("Mergesort Random tamaño de 10000")
 print(t)
 
 t=time()
 QuickSort(GeneraD(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort derecho tamaño de 10000")
+print("Quicksort derecho tamaño de 100")
 print(t)
 
 t=time()
 QuickSort(GeneraI(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort inverso tamaño de 10000")
+print("Quicksort inverso tamaño de 100")
 print(t)
 
 t=time()
 QuickSort(GeneraR(100), 0, 99) ##Si es mucho mayor, llega al límite
 t=time()-t
-print("Quicksort random tamaño de 10000")
+print("Quicksort random tamaño de 100")
 print(t)
