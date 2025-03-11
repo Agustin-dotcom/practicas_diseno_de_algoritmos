@@ -120,27 +120,88 @@ def GeneraI(n):
 def imprime(a,n):
     for i in range(0,n):
         print (a[i])
-        
-def experimento(n):
-    V1 =[] 
-    V2 =[]  
-    V3 =[] 
 
-# Orden directo
-    V2=GeneraD(n)
-# Orden inverso
-    V3=GeneraI(n)
-# Experimento aleatorio
-    tb = 0
-    ti = 0
-    ts = 0
-    for i in range(1,10):
+def experimento(n):
+        V_random_burbuja =[]  # RANDOM
+        V_random_seleccion = []
+        V_random_insercion = []
+        V_directo_burbuja =[]  # DIRECTO
+        V_directo_seleccion = []
+        V_directo_insercion = []
+        V_inverso_burbuja = []
+        V_inverso_seleccion = []
+        V_inverso_insercion = []
+        V1 =[]  # INVERSO
+        
+    # Orden directo
+        V2=GeneraD(n)
+    # Orden inverso
+        V3=GeneraI(n)
+    # Experimento aleatorio
+        tb = 0 # BURBUJA
+        ti = 0 # INSERCION
+        ts = 0 # SELECCION
+
+        
+
+        for _ in range(10):
 # Aleatorio. 10 experimentos
 # Realizar experimentos y completar las listas usando GeneraR(n)
+            V1 = GeneraR(n)
+            # BURBURJA
+            tb = time()
+            Burbuja(V1,n)
+            tb = time() - tb
+            V_random_burbuja.append(tb)
+            # INSERCION
+            ti = time()
+            Insercion(V1,n)
+            ti = time() - ti
+            V_random_insercion.append(ti)
+            # SELECCION
+            ts = time()
+            Seleccion(V1,n)
+            ts = time() - ts
+            V_random_seleccion.append(ts)
+        np.mean(np.array(V_random_burbuja))
+        np.mean(np.array(V_random_insercion))
+        np.mean(np.array(V_random_seleccion))
 
 # Experimento directo
+        # BURBURJA
+        tb = time()
+        Burbuja(V2,n)
+        tb = time() - tb
+        V_directo_burbuja.append(tb)
+        # INSERCION
+        ti = time()
+        Insercion(V2,n)
+        ti = time() - ti
+        V_directo_insercion.append(ti)
+        # SELECCION
+        ts = time()
+        Seleccion(V2,n)
+        ts = time() - ts
+        V_directo_seleccion.append(ts)
 
 # Experimento inverso
+        # BURBURJA
+        tb = time()
+        Burbuja(V3,n)
+        tb = time() - tb
+        V_inverso_burbuja.append(tb)
+        # INSERCION
+        ti = time()
+        Insercion(V3,n)
+        ti = time() - ti
+        V_inverso_insercion.append(ti)
+        # SELECCION
+        ts = time()
+        Seleccion(V3,n)
+        ts = time() - ts
+        V_inverso_seleccion.append(ts)
+
+        return np.mean(np.array(V_random_burbuja)),np.mean(np.array(V_random_seleccion)),np.mean(np.array(V_random_insercion)),V_directo_burbuja,V_directo_seleccion,V_directo_insercion,V_inverso_burbuja,V_inverso_seleccion,V_inverso_insercion
 # Listas iniciales
 X  =[]
 TI1=[]
@@ -152,12 +213,24 @@ TB2=[]
 TI3=[]
 TS3=[]  
 TB3=[]  
-
-# Rellenar las listas con los experimentos
-
-# Presentar resultados
 # Lista de tamaños
 Tam=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+# Rellenar las listas con los experimentos
+
+for i in Tam:
+    k = i*100
+    a,b,c,d,e,f,g,h,j = experimento(k)
+    TB1.append(a)
+    TS1.append(b)
+    TI1.append(c)
+    TB2.append(d)
+    TS2.append(e)
+    TI2.append(f)
+    TB3.append(g)
+    TS3.append(h)
+    TI3.append(j)
+# Presentar resultados
+
 
 # Se imprimen las respectivas listas con pyplot
 plt.plot(Tam,TI1,'r--',Tam,TS1,'bs',Tam,TB1,'g^')
