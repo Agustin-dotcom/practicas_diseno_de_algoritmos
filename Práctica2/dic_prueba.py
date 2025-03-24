@@ -14,7 +14,7 @@ class dicPrioridad:
             item = (elemento, valor)
             self.inserta(item)
  
-    # Inserta un elemento
+     # Inserta un elemento
     def inserta(self, item):
         # Lo añade al final
         self.vector.append(item)
@@ -25,20 +25,22 @@ class dicPrioridad:
         #
         if len(self.diccionario) == 0:
             self.diccionario[item[0]] = self.tamano # item ('C',1) --> {'C':1,..}
-        if len(self.diccionario)!=0:
+        else:
             aux = []
-            last_index = list(self.diccionario).pop()
-            item_poped = self.diccionario.pop(last_index)
-            while self.vector[item_poped] < self.vector[item[1]]:
-                last_index = list(self.diccionario).pop()
-                item_poped = self.diccionario.pop(last_index)
-                aux.append((last_index,item_poped))
+            while len(self.diccionario)!=0:
+                copia = list(self.diccionario.items()).pop()
+                index = copia[1]
+                if self.vector[index][1] >= item[1]:
+                    break
+                aux.append(copia)
+                nombre = copia[0]
+                del(self.diccionario[nombre])
             self.diccionario[item[0]] = self.tamano
-            self.vector.append(item)
-            i = 0
-            while len(aux)!=0:
-                item_poped = aux.pop()
-                self.diccionario[item_poped[0]] = item_poped[1]
+            while len(aux) != 0:
+                copia = aux.pop()
+                nombre = copia[0]
+                val = copia[1]
+                self.diccionario[nombre] = val
             
 
     
