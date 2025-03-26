@@ -528,9 +528,9 @@ class dicPrioridad:
         #return self.vector.pop()
         key = list(self.diccionario).pop() # e.g. 'A'
         index = self.diccionario[key]
-        resul = self.vector[index]
-        del(self.diccionario[key])
-        return resul
+        #resul = self.vector[index]
+        #del(self.diccionario[key])
+        return self.vector[index]
 
     # Actualiza el valor de un elemento 
     def actualiza(self, item):
@@ -736,8 +736,11 @@ def dijkstra2(origen,destino):
         # NOTA: Ahoa DP es un lista con prioridad
         ul=ultimo
         for i in busca:
+            print(f'De {ultimo} puedo ir a {i}')
             if i not in S:
+                print(f'No he visitado todavía {i}')
                 aristasVisitadas.add((ul,i))
+                print(f'{i} ahora es un candidato')
                 Q.add(i)
                 nodosVisitados.add(i)
                 if DP.__getitem__(ul)+dist[(ul,i)]<DP.__getitem__(i):
@@ -751,10 +754,13 @@ def dijkstra2(origen,destino):
         #             min = j
         #             min_i = i
         # min_i
-
-        ultimo = DP.extrae_min()[0]
+        DP_copy = dicPrioridad(DP.vector)
+        DP_copy.diccionario = {i:j for i,j in DP.diccionario.items() if i in Q}
+        #del(DP_copy.diccionario[ultimo])
+        ultimo = DP_copy.extrae_min()[0]
         if ultimo in Q:
             Q.remove(ultimo)
+        
         # for i in range (0,len(Q)):
         #     if Q[i]==ultimo:
         #         Q.pop(i)
@@ -766,9 +772,9 @@ def dijkstra2(origen,destino):
         #
         # item = (ultimo,distancia)  
         #
-        item = DP.extrae_min()
-        ultimo = item[0]
-        TiempoViaje = item[1]
+        #item = DP.extrae_min()
+        #ultimo = item[0]
+        TiempoViaje = ultimo[1]
    
         # Lo incorpora
         #Q.remove(ultimo)
