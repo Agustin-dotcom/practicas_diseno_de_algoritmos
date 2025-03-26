@@ -70,8 +70,9 @@ class dicPrioridad:
         #
         #  COMPLETAR
         #
-
-        if self.vector[indice-1]<self.vector[indice]:
+        # del(self.diccionario[item[0]])
+        # self.inserta(item)
+        while self.vector[indice-1]<self.vector[indice] and indice-1>=0: # TODO MIRAR ESTO
             indice_otro = self.vector[indice-1][0]
             temp = self.diccionario[indice_otro]
             self.diccionario[indice_otro] = indice
@@ -81,7 +82,8 @@ class dicPrioridad:
             temp = self.vector[indice-1]
             self.vector[indice-1] = self.vector[indice]
             self.vector[indice] = temp
-        if self.vector[indice] < self.vector[indice+1]:
+            indice -= 1
+        while self.vector[indice] < self.vector[indice+1] and indice+1 <=len(self.vector)-1:
             indice_otro = self.vector[indice+1][0]
             temp = self.diccionario[indice_otro]
             self.diccionario[indice_otro] = indice
@@ -91,6 +93,7 @@ class dicPrioridad:
             temp = self.vector[indice+1]
             self.vector[indice+1] = self.vector[indice]
             self.vector[indice] = temp
+            indice += 1
         
 
     # Borra un elemento de la cola
