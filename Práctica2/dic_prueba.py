@@ -62,38 +62,30 @@ class dicPrioridad:
 
     # Actualiza el valor de un elemento 
     def actualiza(self, item):
-        # Posición del elemento que se va a modificar
-        indice = self.diccionario[item[0]]
-        # Se actualiza el elemento        
-        self.vector[indice] = item
+            # Posición del elemento que se va a modificar
+            indice = self.diccionario[item[0]]
+            # Se actualiza el elemento        
+            self.vector[indice] = item
 
-        #
-        #  COMPLETAR
-        #
-        # del(self.diccionario[item[0]])
-        # self.inserta(item)
-        while self.vector[indice-1]<self.vector[indice] and indice-1>=0: # TODO MIRAR ESTO
-            indice_otro = self.vector[indice-1][0]
-            temp = self.diccionario[indice_otro]
-            self.diccionario[indice_otro] = indice
-            indice_ = self.vector[indice][0]
-            self.diccionario[indice_] = temp
+            #
+            #  COMPLETAR
+            #
 
-            temp = self.vector[indice-1]
-            self.vector[indice-1] = self.vector[indice]
-            self.vector[indice] = temp
-            indice -= 1
-        while self.vector[indice] < self.vector[indice+1] and indice+1 <=len(self.vector)-1:
-            indice_otro = self.vector[indice+1][0]
-            temp = self.diccionario[indice_otro]
-            self.diccionario[indice_otro] = indice
-            indice_ = self.vector[indice][0]
-            self.diccionario[indice_] = temp
-
-            temp = self.vector[indice+1]
-            self.vector[indice+1] = self.vector[indice]
-            self.vector[indice] = temp
-            indice += 1
+            tupla = (item[0],indice)
+            del(self.diccionario[tupla[0]])
+            aux =[]
+            while True:
+                if len(self.diccionario)==0:
+                    break
+                copia = list(self.diccionario.items()).pop()
+                if self.vector[copia[1]][1] >= self.vector[tupla[1]][1]:
+                    break
+                aux.append(copia)
+                del(self.diccionario[copia[0]])
+            self.diccionario[tupla[0]] = tupla[1]
+            while len(aux) != 0:
+                tupla = aux.pop()
+                self.diccionario[tupla[0]] = tupla[1]
         
 
     # Borra un elemento de la cola
